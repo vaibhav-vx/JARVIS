@@ -1,12 +1,513 @@
-/* HomePage — Main hackathon site (built next) */
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { Shield, Zap, Cpu, Award, Calendar, ChevronRight, Eye } from 'lucide-react'
+
 export default function HomePage() {
+  /* Countdown Timer Logic for Oct 16, 2026 */
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+
+  useEffect(() => {
+    const targetDate = new Date('October 16, 2026 09:00:00 IST').getTime()
+    const timer = setInterval(() => {
+      const now = new Date().getTime()
+      const diff = Math.max(0, targetDate - now)
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+      setTimeLeft({ days, hours, minutes, seconds })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
-    <div style={{ background: '#050505', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ textAlign: 'center', fontFamily: "'Orbitron', monospace" }}>
-        <p style={{ color: '#00F0FF', fontSize: '1rem', letterSpacing: '0.2em' }}>
-          &gt; HOMEPAGE — LOADING NEXT SPRINT...
-        </p>
-      </div>
+    <div style={styles.root}>
+      {/* HUD Background Grid & Scanlines */}
+      <div style={styles.hudGrid} />
+      <div style={styles.scanLine} />
+
+      {/* ── HERO CONSOLE ───────────────────────── */}
+      <section style={styles.heroSection}>
+        {/* Animated Arc Reactor SVG in Background */}
+        <div style={styles.reactorWrap}>
+          <div style={styles.reactorRingOuter} />
+          <div style={styles.reactorRingInner} />
+          <div style={styles.reactorCore} />
+        </div>
+
+        <motion.div
+          style={styles.heroContent}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div style={styles.collegeBadge}>
+            SHREE L. R. TIWARI COLLEGE OF ENGINEERING
+          </div>
+
+          <h1 style={styles.heroTitle}>J.A.R.V.I.S.</h1>
+          <h2 style={styles.heroSubtitle}>HACKATHON &bull; PROTOCOL 4.0</h2>
+
+          <p style={styles.heroTagline}>
+            Activating Intelligence. Assembling Innovators.
+          </p>
+
+          {/* Countdown Clock */}
+          <div style={styles.countdownContainer}>
+            <div style={styles.countdownTitle}>[ T-MINUS TO MISSION LAUNCH ]</div>
+            <div style={styles.timerGrid}>
+              <div style={styles.timerBox}>
+                <span style={styles.timerValue}>
+                  {String(timeLeft.days).padStart(2, '0')}
+                </span>
+                <span style={styles.timerLabel}>DAYS</span>
+              </div>
+              <span style={styles.timerColon}>:</span>
+              <div style={styles.timerBox}>
+                <span style={styles.timerValue}>
+                  {String(timeLeft.hours).padStart(2, '0')}
+                </span>
+                <span style={styles.timerLabel}>HOURS</span>
+              </div>
+              <span style={styles.timerColon}>:</span>
+              <div style={styles.timerBox}>
+                <span style={styles.timerValue}>
+                  {String(timeLeft.minutes).padStart(2, '0')}
+                </span>
+                <span style={styles.timerLabel}>MINS</span>
+              </div>
+              <span style={styles.timerColon}>:</span>
+              <div style={styles.timerBox}>
+                <span style={styles.timerValue}>
+                  {String(timeLeft.seconds).padStart(2, '0')}
+                </span>
+                <span style={styles.timerLabel}>SECS</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action CTAs */}
+          <div style={styles.heroBtnGroup}>
+            <Link to="/register">
+              <motion.button
+                style={styles.primaryBtn}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                [ INITIALIZE REGISTRATION ]
+              </motion.button>
+            </Link>
+
+            <Link to="/protocols">
+              <motion.button
+                style={styles.secondaryBtn}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                [ DISCOVER PROTOCOLS ]
+              </motion.button>
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ── TELEMETRY STATS BAR ───────────────────── */}
+      <section style={styles.statsSection}>
+        <div style={styles.statsContainer}>
+          <div style={styles.statCard}>
+            <div style={styles.statNumber}>48:00:00</div>
+            <div style={styles.statLabel}>NON-STOP HACKATHON</div>
+          </div>
+          <div style={styles.statCard}>
+            <div style={styles.statNumber}>3 – 5</div>
+            <div style={styles.statLabel}>MEMBERS PER TEAM</div>
+          </div>
+          <div style={styles.statCard}>
+            <div style={styles.statNumber}>4 AI PROTOCOLS</div>
+            <div style={styles.statLabel}>SPECIALIZED TRACKS</div>
+          </div>
+          <div style={styles.statCard}>
+            <div style={styles.statNumber}>STARK GRANTS</div>
+            <div style={styles.statLabel}>CASH & REWARDS POOL</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CENTRAL COMMAND HUB CARDS ─────────────── */}
+      <section style={styles.hubSection}>
+        <div style={styles.sectionHeader}>
+          <h3 style={styles.sectionTitle}>[ COMMAND CONSOLE HUBS ]</h3>
+          <p style={styles.sectionSub}>Select a protocol module to access details</p>
+        </div>
+
+        <div style={styles.hubGridCards}>
+          {/* Card 1: About */}
+          <Link to="/about" style={styles.hubCard}>
+            <Shield size={28} color="#00F0FF" />
+            <h4 style={styles.hubCardTitle}>THE STARK INITIATIVE</h4>
+            <p style={styles.hubCardDesc}>
+              Classified mission briefing & Iron Man transmission.
+            </p>
+            <div style={styles.hubCardLink}>EXPLORE ABOUT &rsaquo;</div>
+          </Link>
+
+          {/* Card 2: Protocols */}
+          <Link to="/protocols" style={styles.hubCard}>
+            <Cpu size={28} color="#00F0FF" />
+            <h4 style={styles.hubCardTitle}>AI PROTOCOLS</h4>
+            <p style={styles.hubCardDesc}>
+              4 Specialized tracks: J.A.R.V.I.S., F.R.I.D.A.Y., E.D.I.T.H., H.O.M.E.R.
+            </p>
+            <div style={styles.hubCardLink}>VIEW PROTOCOLS &rsaquo;</div>
+          </Link>
+
+          {/* Card 3: V.I.S.I.O.N. AR */}
+          <Link to="/vision" style={styles.hubCard}>
+            <Eye size={28} color="#E62429" />
+            <h4 style={{ ...styles.hubCardTitle, color: '#E62429' }}>V.I.S.I.O.N. (AR)</h4>
+            <p style={styles.hubCardDesc}>
+              WebAR Tech Treasure Hunt on campus using phone camera.
+            </p>
+            <div style={{ ...styles.hubCardLink, color: '#E62429' }}>LAUNCH AR SCANNER &rsaquo;</div>
+          </Link>
+
+          {/* Card 4: Armor Vault */}
+          <Link to="/armor-vault" style={styles.hubCard}>
+            <Zap size={28} color="#00F0FF" />
+            <h4 style={styles.hubCardTitle}>STARK ARMOR VAULT</h4>
+            <p style={styles.hubCardDesc}>
+              Interactive 3D Iron Man Suit Specs (Mark I to Mark LXXXV).
+            </p>
+            <div style={styles.hubCardLink}>ENTER VAULT &rsaquo;</div>
+          </Link>
+
+          {/* Card 5: Prizes */}
+          <Link to="/prizes" style={styles.hubCard}>
+            <Award size={28} color="#FFD700" />
+            <h4 style={{ ...styles.hubCardTitle, color: '#FFD700' }}>STARK GRANTS</h4>
+            <p style={styles.hubCardDesc}>
+              Gold, Silver, Bronze podium prizes & special track awards.
+            </p>
+            <div style={{ ...styles.hubCardLink, color: '#FFD700' }}>VIEW GRANTS &rsaquo;</div>
+          </Link>
+
+          {/* Card 6: Timeline */}
+          <Link to="/timeline" style={styles.hubCard}>
+            <Calendar size={28} color="#00F0FF" />
+            <h4 style={styles.hubCardTitle}>MISSION SCHEDULE</h4>
+            <p style={styles.hubCardDesc}>
+              Flight path timeline for October 16–17, 2026.
+            </p>
+            <div style={styles.hubCardLink}>VIEW TIMELINE &rsaquo;</div>
+          </Link>
+        </div>
+      </section>
     </div>
   )
+}
+
+const ARC = '#00F0FF'
+const RED = '#E62429'
+const BG = '#050505'
+
+const styles = {
+  root: {
+    position: 'relative',
+    background: BG,
+    color: '#FFFFFF',
+    minHeight: '100vh',
+    overflowX: 'hidden',
+  },
+  hudGrid: {
+    position: 'fixed',
+    inset: 0,
+    backgroundImage: `linear-gradient(${ARC}08 1px, transparent 1px), linear-gradient(90deg, ${ARC}08 1px, transparent 1px)`,
+    backgroundSize: '40px 40px',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+  scanLine: {
+    position: 'fixed',
+    top: '-100%',
+    left: 0,
+    right: 0,
+    height: '2px',
+    background: `linear-gradient(transparent, ${ARC}30, transparent)`,
+    animation: 'scan-line 8s linear infinite',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+
+  /* Hero Section */
+  heroSection: {
+    position: 'relative',
+    zIndex: 1,
+    padding: '5rem 1.5rem 4rem 1.5rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  reactorWrap: {
+    position: 'absolute',
+    top: '40%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '320px',
+    height: '320px',
+    pointerEvents: 'none',
+    opacity: 0.35,
+  },
+  reactorRingOuter: {
+    position: 'absolute',
+    inset: 0,
+    borderRadius: '50%',
+    border: `2px dashed ${ARC}`,
+    animation: 'spin 30s linear infinite',
+  },
+  reactorRingInner: {
+    position: 'absolute',
+    inset: '20%',
+    borderRadius: '50%',
+    border: `1.5px solid ${ARC}80`,
+    animation: 'reactor-pulse 3s ease-in-out infinite',
+  },
+  reactorCore: {
+    position: 'absolute',
+    inset: '40%',
+    borderRadius: '50%',
+    background: ARC,
+    boxShadow: `0 0 50px ${ARC}, 0 0 100px ${ARC}80`,
+  },
+  heroContent: {
+    position: 'relative',
+    zIndex: 2,
+    maxWidth: '900px',
+  },
+  collegeBadge: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
+    fontWeight: 700,
+    color: ARC,
+    letterSpacing: '0.2em',
+    marginBottom: '0.75rem',
+    textTransform: 'uppercase',
+  },
+  heroTitle: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: 'clamp(3.5rem, 10vw, 7rem)',
+    fontWeight: 900,
+    color: ARC,
+    letterSpacing: '0.15em',
+    lineHeight: 1,
+    textShadow: `0 0 30px ${ARC}80`,
+    margin: 0,
+  },
+  heroSubtitle: {
+    fontFamily: "'Rajdhani', sans-serif",
+    fontSize: 'clamp(1.2rem, 4vw, 2.2rem)',
+    fontWeight: 700,
+    color: '#FFFFFF',
+    letterSpacing: '0.3em',
+    marginTop: '0.5rem',
+    textTransform: 'uppercase',
+  },
+  heroTagline: {
+    fontFamily: "'Inter', sans-serif",
+    fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+    color: '#9CA3AF',
+    marginTop: '0.75rem',
+  },
+
+  /* Countdown */
+  countdownContainer: {
+    marginTop: '2.5rem',
+    background: 'rgba(10, 15, 25, 0.85)',
+    border: `1px solid ${ARC}40`,
+    borderRadius: '8px',
+    padding: '1.5rem 2rem',
+    boxShadow: `0 0 30px ${ARC}20`,
+    display: 'inline-block',
+  },
+  countdownTitle: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '0.7rem',
+    color: RED,
+    letterSpacing: '0.2em',
+    marginBottom: '1rem',
+  },
+  timerGrid: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.75rem',
+  },
+  timerBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  timerValue: {
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+    fontWeight: 800,
+    color: ARC,
+    lineHeight: 1,
+    textShadow: `0 0 15px ${ARC}`,
+  },
+  timerLabel: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '0.6rem',
+    color: '#9CA3AF',
+    marginTop: '0.3rem',
+    letterSpacing: '0.1em',
+  },
+  timerColon: {
+    fontSize: '2rem',
+    color: ARC,
+    fontWeight: 700,
+    marginBottom: '1rem',
+  },
+
+  /* CTAs */
+  heroBtnGroup: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '1.25rem',
+    marginTop: '2.5rem',
+  },
+  primaryBtn: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '0.8rem',
+    fontWeight: 700,
+    color: RED,
+    background: 'rgba(230, 36, 41, 0.15)',
+    border: `1.5px solid ${RED}`,
+    padding: '1rem 2.2rem',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    letterSpacing: '0.12em',
+    boxShadow: `0 0 20px ${RED}40`,
+  },
+  secondaryBtn: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '0.8rem',
+    fontWeight: 700,
+    color: ARC,
+    background: 'rgba(0, 240, 255, 0.1)',
+    border: `1.5px solid ${ARC}`,
+    padding: '1rem 2.2rem',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    letterSpacing: '0.12em',
+    boxShadow: `0 0 20px ${ARC}30`,
+  },
+
+  /* Stats Section */
+  statsSection: {
+    position: 'relative',
+    zIndex: 1,
+    borderTop: `1px solid ${ARC}20`,
+    borderBottom: `1px solid ${ARC}20`,
+    background: 'rgba(5, 8, 15, 0.9)',
+    padding: '2rem 1.5rem',
+  },
+  statsContainer: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+    gap: '1.5rem',
+    textAlign: 'center',
+  },
+  statCard: {
+    padding: '1rem',
+  },
+  statNumber: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '1.4rem',
+    fontWeight: 800,
+    color: ARC,
+    letterSpacing: '0.05em',
+  },
+  statLabel: {
+    fontFamily: "'Rajdhani', sans-serif",
+    fontSize: '0.8rem',
+    fontWeight: 600,
+    color: '#9CA3AF',
+    letterSpacing: '0.1em',
+    marginTop: '0.25rem',
+  },
+
+  /* Hub Cards Section */
+  hubSection: {
+    position: 'relative',
+    zIndex: 1,
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '5rem 1.5rem',
+  },
+  sectionHeader: {
+    textAlign: 'center',
+    marginBottom: '3rem',
+  },
+  sectionTitle: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '1.6rem',
+    fontWeight: 800,
+    color: ARC,
+    letterSpacing: '0.15em',
+    margin: 0,
+  },
+  sectionSub: {
+    fontFamily: "'Inter', sans-serif",
+    fontSize: '0.9rem',
+    color: '#9CA3AF',
+    marginTop: '0.5rem',
+  },
+  hubGridCards: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gap: '1.75rem',
+  },
+  hubCard: {
+    background: 'rgba(10, 15, 25, 0.75)',
+    border: `1px solid ${ARC}30`,
+    borderRadius: '8px',
+    padding: '2rem 1.5rem',
+    textDecoration: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+    transition: 'all 0.3s ease',
+    backdropFilter: 'blur(10px)',
+  },
+  hubCardTitle: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '1.1rem',
+    fontWeight: 700,
+    color: ARC,
+    margin: 0,
+    letterSpacing: '0.08em',
+  },
+  hubCardDesc: {
+    fontFamily: "'Inter', sans-serif",
+    fontSize: '0.85rem',
+    color: '#9CA3AF',
+    lineHeight: '1.5',
+    margin: 0,
+  },
+  hubCardLink: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: '0.72rem',
+    fontWeight: 700,
+    color: ARC,
+    letterSpacing: '0.1em',
+    marginTop: 'auto',
+  },
 }
