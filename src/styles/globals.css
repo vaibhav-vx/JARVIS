@@ -1,15 +1,17 @@
 /* ============================================
-   JARVIS HACKATHON — Design System Tokens
+   JARVIS HACKATHON — Titanium Gunmetal System
    Shree L. R. Tiwari College Of Engineering
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root {
-  /* 1. Primary Accent Colors */
-  --btn-base: #2563eb;
-  --btn-hover: #1d4ed8;
-  --btn-active: #1e40af;
+  /* 1. Titanium Gunmetal Button Palette */
+  --btn-base: #212630;
+  --btn-hover: #363e4e;
+  --btn-active: #181b22;
+  --btn-gunmetal-gradient: linear-gradient(135deg, #181b22 0%, #2b313e 100%);
+  --btn-gunmetal-hover: linear-gradient(135deg, #212630 0%, #363e4e 100%);
 
   /* 2. Premium Gradients */
   --obsidian-gradient: linear-gradient(135deg, #000000 0%, #030303 14%, #08080a 28%, #0d0d10 42%, #131316 57%, #17171a 71%, #1e1e22 85%, #242428 100%);
@@ -57,26 +59,9 @@ html, body {
   background: #111827;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2563eb;
+  background: #363e4e;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
-}
-
-/* Keyframes */
-@keyframes reactor-pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 50px rgba(29, 78, 216, 0.8);
-  }
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  background: #4b5563;
 }

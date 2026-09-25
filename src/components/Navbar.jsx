@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Shield } from 'lucide-react'
 
 export default function Navbar() {
   const location = useLocation()
@@ -27,9 +27,7 @@ export default function Navbar() {
       <div style={styles.container}>
         {/* Brand */}
         <Link to="/home" style={styles.brandLink}>
-          <div style={styles.badgeWrap}>
-            <div style={styles.badgeInner} />
-          </div>
+          <Shield size={22} color="#f9fafb" />
           <div style={styles.brandTextWrap}>
             <span style={styles.brandTitle}>J.A.R.V.I.S.</span>
             <span style={styles.brandTag}>STARK TECH</span>
@@ -47,8 +45,8 @@ export default function Navbar() {
                 style={{
                   ...styles.navItem,
                   color: isActive ? '#f9fafb' : '#9ca3af',
-                  borderBottom: isActive ? '2px solid #2563eb' : '2px solid transparent',
-                  background: isActive ? 'rgba(37, 99, 235, 0.12)' : 'transparent',
+                  borderBottom: isActive ? '2px solid #4b5563' : '2px solid transparent',
+                  background: isActive ? '#1f2937' : 'transparent',
                 }}
               >
                 {link.name}
@@ -57,12 +55,12 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Primary CTA */}
+        {/* Primary CTA — Titanium Gunmetal Button */}
         <div style={styles.ctaWrap}>
           <Link to="/register" style={{ textDecoration: 'none' }}>
             <motion.button
               style={styles.registerBtn}
-              whileHover={{ backgroundColor: '#1d4ed8', scale: 1.03 }}
+              whileHover={{ backgroundColor: '#363e4e', scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
               [ INITIALIZE REGISTRATION ]
@@ -74,7 +72,7 @@ export default function Navbar() {
             style={styles.mobileToggle}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X size={26} color="#2563eb" /> : <Menu size={26} color="#2563eb" />}
+            {mobileOpen ? <X size={26} color="#f9fafb" /> : <Menu size={26} color="#f9fafb" />}
           </button>
         </div>
       </div>
@@ -120,7 +118,7 @@ const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    background: 'rgba(17, 24, 39, 0.92)',
+    background: 'rgba(17, 24, 39, 0.95)',
     backdropFilter: 'blur(16px)',
     borderBottom: '1px solid #374151',
   },
@@ -135,26 +133,8 @@ const styles = {
   brandLink: {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.75rem',
+    gap: '0.6rem',
     textDecoration: 'none',
-  },
-  badgeWrap: {
-    width: '34px',
-    height: '34px',
-    borderRadius: '50%',
-    border: '2px solid #2563eb',
-    background: 'rgba(37, 99, 235, 0.15)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0 0 12px rgba(37, 99, 235, 0.4)',
-  },
-  badgeInner: {
-    width: '12px',
-    height: '12px',
-    borderRadius: '50%',
-    background: '#2563eb',
-    boxShadow: '0 0 8px #2563eb',
   },
   brandTextWrap: {
     display: 'flex',
@@ -172,7 +152,7 @@ const styles = {
     fontFamily: "'Rajdhani', sans-serif",
     fontWeight: 700,
     fontSize: '0.65rem',
-    color: '#2563eb',
+    color: '#9ca3af',
     letterSpacing: '0.2em',
     marginTop: '2px',
   },
@@ -201,12 +181,13 @@ const styles = {
     fontSize: '0.72rem',
     fontWeight: 800,
     color: '#f9fafb',
-    background: '#2563eb',
-    border: '1px solid #374151',
+    background: 'linear-gradient(135deg, #181b22 0%, #2b313e 100%)',
+    border: '1px solid #4b5563',
     padding: '0.65rem 1.3rem',
     borderRadius: '6px',
     cursor: 'pointer',
     letterSpacing: '0.1em',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)',
     transition: 'all 0.2s ease',
   },
   mobileToggle: {
@@ -235,7 +216,8 @@ const styles = {
     fontSize: '0.8rem',
     fontWeight: 800,
     color: '#f9fafb',
-    background: '#2563eb',
+    background: 'linear-gradient(135deg, #181b22 0%, #2b313e 100%)',
+    border: '1px solid #4b5563',
     textDecoration: 'none',
     marginTop: '0.5rem',
     padding: '0.75rem',

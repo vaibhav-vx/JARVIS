@@ -28,13 +28,6 @@ export default function HomePage() {
     <div style={styles.root}>
       {/* ── HERO CONSOLE ───────────────────────── */}
       <section style={styles.heroSection}>
-        {/* Arc Reactor Graphic */}
-        <div style={styles.reactorWrap}>
-          <div style={styles.reactorRingOuter} />
-          <div style={styles.reactorRingInner} />
-          <div style={styles.reactorCore} />
-        </div>
-
         <motion.div
           style={styles.heroContent}
           initial={{ opacity: 0, y: 20 }}
@@ -83,7 +76,7 @@ export default function HomePage() {
             <Link to="/register" style={{ textDecoration: 'none' }}>
               <motion.button
                 style={styles.primaryBtn}
-                whileHover={{ backgroundColor: '#1d4ed8', scale: 1.04 }}
+                whileHover={{ backgroundColor: '#363e4e', scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
               >
                 [ INITIALIZE REGISTRATION ]
@@ -93,7 +86,7 @@ export default function HomePage() {
             <Link to="/protocols" style={{ textDecoration: 'none' }}>
               <motion.button
                 style={styles.secondaryBtn}
-                whileHover={{ backgroundColor: '#374151', scale: 1.04 }}
+                whileHover={{ backgroundColor: '#2b313e', scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
               >
                 [ DISCOVER PROTOCOLS ]
@@ -135,7 +128,7 @@ export default function HomePage() {
         <div style={styles.hubGridCards}>
           {/* Card 1: About */}
           <Link to="/about" style={styles.hubCard}>
-            <Shield size={28} color="#2563eb" />
+            <Shield size={28} color="#9ca3af" />
             <h4 style={styles.hubCardTitle}>THE STARK INITIATIVE</h4>
             <p style={styles.hubCardDesc}>
               Classified mission briefing & Iron Man video transmission.
@@ -145,7 +138,7 @@ export default function HomePage() {
 
           {/* Card 2: Protocols */}
           <Link to="/protocols" style={styles.hubCard}>
-            <Cpu size={28} color="#2563eb" />
+            <Cpu size={28} color="#9ca3af" />
             <h4 style={styles.hubCardTitle}>AI PROTOCOLS</h4>
             <p style={styles.hubCardDesc}>
               4 Specialized tracks: J.A.R.V.I.S., F.R.I.D.A.Y., E.D.I.T.H., H.O.M.E.R.
@@ -155,7 +148,7 @@ export default function HomePage() {
 
           {/* Card 3: V.I.S.I.O.N. AR */}
           <Link to="/vision" style={styles.hubCard}>
-            <Eye size={28} color="#2563eb" />
+            <Eye size={28} color="#9ca3af" />
             <h4 style={styles.hubCardTitle}>V.I.S.I.O.N. (AR)</h4>
             <p style={styles.hubCardDesc}>
               WebAR Tech Treasure Hunt on campus using phone camera.
@@ -165,7 +158,7 @@ export default function HomePage() {
 
           {/* Card 4: Armor Vault */}
           <Link to="/armor-vault" style={styles.hubCard}>
-            <Zap size={28} color="#2563eb" />
+            <Zap size={28} color="#9ca3af" />
             <h4 style={styles.hubCardTitle}>STARK ARMOR VAULT</h4>
             <p style={styles.hubCardDesc}>
               Interactive 3D Iron Man Suit Specs (Mark I to Mark LXXXV).
@@ -175,7 +168,7 @@ export default function HomePage() {
 
           {/* Card 5: Prizes */}
           <Link to="/prizes" style={styles.hubCard}>
-            <Award size={28} color="#2563eb" />
+            <Award size={28} color="#9ca3af" />
             <h4 style={styles.hubCardTitle}>STARK GRANTS</h4>
             <p style={styles.hubCardDesc}>
               Gold, Silver, Bronze podium prizes & special track awards.
@@ -185,7 +178,7 @@ export default function HomePage() {
 
           {/* Card 6: Timeline */}
           <Link to="/timeline" style={styles.hubCard}>
-            <Calendar size={28} color="#2563eb" />
+            <Calendar size={28} color="#9ca3af" />
             <h4 style={styles.hubCardTitle}>MISSION SCHEDULE</h4>
             <p style={styles.hubCardDesc}>
               Flight path timeline for October 16–17, 2026.
@@ -216,37 +209,6 @@ const styles = {
     alignItems: 'center',
     textAlign: 'center',
   },
-  reactorWrap: {
-    position: 'absolute',
-    top: '40%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '320px',
-    height: '320px',
-    pointerEvents: 'none',
-    opacity: 0.35,
-  },
-  reactorRingOuter: {
-    position: 'absolute',
-    inset: 0,
-    borderRadius: '50%',
-    border: `2px dashed #2563eb`,
-    animation: 'spin 30s linear infinite',
-  },
-  reactorRingInner: {
-    position: 'absolute',
-    inset: '20%',
-    borderRadius: '50%',
-    border: `1.5px solid #1d4ed8`,
-    animation: 'reactor-pulse 3s ease-in-out infinite',
-  },
-  reactorCore: {
-    position: 'absolute',
-    inset: '40%',
-    borderRadius: '50%',
-    background: '#2563eb',
-    boxShadow: `0 0 50px #2563eb`,
-  },
   heroContent: {
     position: 'relative',
     zIndex: 2,
@@ -256,7 +218,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
     fontWeight: 700,
-    color: '#2563eb',
+    color: '#9ca3af',
     letterSpacing: '0.2em',
     marginBottom: '0.75rem',
     textTransform: 'uppercase',
@@ -274,7 +236,7 @@ const styles = {
     fontFamily: "'Rajdhani', sans-serif",
     fontSize: 'clamp(1.2rem, 4vw, 2.2rem)',
     fontWeight: 700,
-    color: '#2563eb',
+    color: '#9ca3af',
     letterSpacing: '0.3em',
     marginTop: '0.5rem',
     textTransform: 'uppercase',
@@ -282,7 +244,7 @@ const styles = {
   heroTagline: {
     fontFamily: "'Inter', sans-serif",
     fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-    color: '#9ca3af',
+    color: '#6b7280',
     marginTop: '0.75rem',
   },
 
@@ -299,7 +261,7 @@ const styles = {
   countdownTitle: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.7rem',
-    color: '#2563eb',
+    color: '#9ca3af',
     letterSpacing: '0.2em',
     marginBottom: '1rem',
   },
@@ -324,18 +286,18 @@ const styles = {
   timerLabel: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.6rem',
-    color: '#9ca3af',
+    color: '#6b7280',
     marginTop: '0.3rem',
     letterSpacing: '0.1em',
   },
   timerColon: {
     fontSize: '2rem',
-    color: '#2563eb',
+    color: '#9ca3af',
     fontWeight: 700,
     marginBottom: '1rem',
   },
 
-  /* CTAs */
+  /* CTAs - Titanium Gunmetal Buttons */
   heroBtnGroup: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -348,12 +310,13 @@ const styles = {
     fontSize: '0.8rem',
     fontWeight: 800,
     color: '#f9fafb',
-    background: '#2563eb',
-    border: '1px solid #374151',
+    background: 'linear-gradient(135deg, #181b22 0%, #2b313e 100%)',
+    border: '1px solid #4b5563',
     padding: '1rem 2.2rem',
     borderRadius: '6px',
     cursor: 'pointer',
     letterSpacing: '0.12em',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)',
     transition: 'all 0.2s ease',
   },
   secondaryBtn: {
@@ -374,8 +337,8 @@ const styles = {
   statsSection: {
     position: 'relative',
     zIndex: 1,
-    borderTop: `1px solid #374151`,
-    borderBottom: `1px solid #374151`,
+    borderTop: '1px solid #374151',
+    borderBottom: '1px solid #374151',
     background: '#1f2937',
     padding: '2rem 1.5rem',
   },
@@ -394,7 +357,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.4rem',
     fontWeight: 800,
-    color: '#2563eb',
+    color: '#f9fafb',
     letterSpacing: '0.05em',
   },
   statLabel: {
@@ -467,7 +430,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.72rem',
     fontWeight: 700,
-    color: '#2563eb',
+    color: '#f9fafb',
     letterSpacing: '0.1em',
     marginTop: 'auto',
   },
