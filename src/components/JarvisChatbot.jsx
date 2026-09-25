@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bot, X, Send, Cpu, Volume2, Sparkles, ShieldAlert } from 'lucide-react'
+import { Bot, X, Send } from 'lucide-react'
 
 /* ─────────────────────────────────────────────────────────
    AI PERSONAS MATRIX
@@ -11,7 +11,7 @@ const AI_PERSONAS = {
     id: 'JARVIS',
     name: 'J.A.R.V.I.S.',
     title: 'Primary Tactical Assistant',
-    accentColor: '#00F0FF',
+    accentColor: '#2563eb',
     voice: 'British Gentleman AI',
     greeting: "At your service, boss. I am J.A.R.V.I.S. How may I assist your mission at Shree L. R. Tiwari College Of Engineering?",
   },
@@ -19,7 +19,7 @@ const AI_PERSONAS = {
     id: 'FRIDAY',
     name: 'F.R.I.D.A.Y.',
     title: 'Combat & Tactical AI',
-    accentColor: '#E62429',
+    accentColor: '#1d4ed8',
     voice: 'Irish Combat Assistant',
     greeting: "F.R.I.D.A.Y. online! All tactical systems green for the JARVIS Hackathon. What's our next play?",
   },
@@ -27,7 +27,7 @@ const AI_PERSONAS = {
     id: 'EDITH',
     name: 'E.D.I.T.H.',
     title: 'Global Security Network',
-    accentColor: '#3B82F6',
+    accentColor: '#2563eb',
     voice: 'Tactical Glasses AI',
     greeting: "Even Dead I'm The Hero. E.D.I.T.H. security protocol engaged. Ready to verify rules and challenge statements.",
   },
@@ -35,7 +35,7 @@ const AI_PERSONAS = {
     id: 'KAREN',
     name: 'K.A.R.E.N.',
     title: 'Suit Lady Analytics AI',
-    accentColor: '#10B981',
+    accentColor: '#10b981',
     voice: 'Analytical Suit Lady',
     greeting: "Hello there! K.A.R.E.N. here. Need help selecting your team track or analyzing suit specifications?",
   },
@@ -43,7 +43,7 @@ const AI_PERSONAS = {
     id: 'VERONICA',
     name: 'V.E.R.O.N.I.C.A.',
     title: 'Heavy Defense & Orbital Pod',
-    accentColor: '#F59E0B',
+    accentColor: '#f59e0b',
     voice: 'Heavy Ordnance AI',
     greeting: "V.E.R.O.N.I.C.A. satellite pod locked in orbit. Hulkbuster protocols standby. Ready to handle heavy technical queries.",
   },
@@ -97,12 +97,10 @@ export default function JarvisChatbot() {
   const [input, setInput] = useState('')
   const chatEndRef = useRef(null)
 
-  // Auto-scroll chat
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, open])
 
-  // Switch AI Persona
   const handleSwitchAI = (personaKey) => {
     const selected = AI_PERSONAS[personaKey]
     setActiveAI(selected)
@@ -116,7 +114,6 @@ export default function JarvisChatbot() {
     ])
   }
 
-  // Handle Send Message
   const handleSend = (e) => {
     e.preventDefault()
     if (!input.trim()) return
@@ -127,7 +124,6 @@ export default function JarvisChatbot() {
     setMessages((prev) => [...prev, { sender: 'user', text: userText, time: timeStr }])
     setInput('')
 
-    // Generate AI response based on knowledge base
     setTimeout(() => {
       const lower = userText.toLowerCase()
       let foundAnswer = null
@@ -150,29 +146,22 @@ export default function JarvisChatbot() {
     }, 600)
   }
 
-  // Hide Chatbot on Landing Page (/)
   if (location.pathname === '/') return null
 
   return (
     <>
-      {/* Floating Toggle Button */}
       {!open && (
         <motion.button
-          style={{ ...styles.toggleBtn, borderColor: activeAI.accentColor }}
+          style={styles.toggleBtn}
           onClick={() => setOpen(true)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
         >
-          <Bot size={24} color={activeAI.accentColor} />
-          <span style={{ ...styles.toggleBadge, background: activeAI.accentColor }}>
-            {activeAI.name}
-          </span>
+          <Bot size={24} color="#f9fafb" />
+          <span style={styles.toggleBadge}>{activeAI.name}</span>
         </motion.button>
       )}
 
-      {/* Chat Window Modal */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -182,19 +171,17 @@ export default function JarvisChatbot() {
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
           >
             {/* Header */}
-            <div style={{ ...styles.header, borderBottomColor: activeAI.accentColor }}>
+            <div style={styles.header}>
               <div style={styles.headerTitleWrap}>
-                <div style={{ ...styles.statusDot, background: activeAI.accentColor }} />
+                <div style={styles.statusDot} />
                 <div>
-                  <h3 style={{ ...styles.headerName, color: activeAI.accentColor }}>
-                    {activeAI.name}
-                  </h3>
+                  <h3 style={styles.headerName}>{activeAI.name}</h3>
                   <p style={styles.headerTitle}>{activeAI.title}</p>
                 </div>
               </div>
 
               <button style={styles.closeBtn} onClick={() => setOpen(false)}>
-                <X size={18} color="#9CA3AF" />
+                <X size={18} color="#9ca3af" />
               </button>
             </div>
 
@@ -210,9 +197,9 @@ export default function JarvisChatbot() {
                     onClick={() => handleSwitchAI(key)}
                     style={{
                       ...styles.personaChip,
-                      borderColor: isActive ? persona.accentColor : 'rgba(255,255,255,0.1)',
-                      color: isActive ? persona.accentColor : '#9CA3AF',
-                      background: isActive ? `${persona.accentColor}15` : 'transparent',
+                      borderColor: isActive ? '#2563eb' : '#374151',
+                      color: isActive ? '#f9fafb' : '#9ca3af',
+                      background: isActive ? '#2563eb' : 'transparent',
                     }}
                   >
                     {persona.name}
@@ -221,7 +208,7 @@ export default function JarvisChatbot() {
               })}
             </div>
 
-            {/* Messages Area */}
+            {/* Messages */}
             <div style={styles.messagesArea}>
               {messages.map((msg, i) => (
                 <div
@@ -236,15 +223,11 @@ export default function JarvisChatbot() {
                       ...styles.msgBubble,
                       ...(msg.sender === 'user'
                         ? styles.userBubble
-                        : {
-                            background: 'rgba(15, 25, 40, 0.85)',
-                            border: `1px solid ${activeAI.accentColor}40`,
-                            color: '#E5E7EB',
-                          }),
+                        : styles.aiBubble),
                     }}
                   >
                     {msg.sender === 'ai' && (
-                      <div style={{ ...styles.msgAiLabel, color: activeAI.accentColor }}>
+                      <div style={styles.msgAiLabel}>
                         {activeAI.name} &bull; {msg.time}
                       </div>
                     )}
@@ -259,16 +242,13 @@ export default function JarvisChatbot() {
             <form onSubmit={handleSend} style={styles.inputForm}>
               <input
                 type="text"
-                placeholder={`Ask ${activeAI.name} about hackathon, rules, or Iron Man suits...`}
+                placeholder={`Ask ${activeAI.name}...`}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 style={styles.inputField}
               />
-              <button
-                type="submit"
-                style={{ ...styles.sendBtn, background: activeAI.accentColor }}
-              >
-                <Send size={16} color="#050505" />
+              <button type="submit" style={styles.sendBtn}>
+                <Send size={16} color="#f9fafb" />
               </button>
             </form>
           </motion.div>
@@ -284,16 +264,16 @@ const styles = {
     bottom: 24,
     right: 24,
     zIndex: 999,
-    width: 60,
-    height: 60,
+    width: 58,
+    height: 58,
     borderRadius: '50%',
-    background: '#0a0d14',
-    border: '2px solid #00F0FF',
+    background: '#2563eb',
+    border: '1px solid #374151',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
-    boxShadow: '0 0 20px rgba(0, 240, 255, 0.4)',
+    boxShadow: '0 8px 24px rgba(37, 99, 235, 0.4)',
   },
   toggleBadge: {
     position: 'absolute',
@@ -302,7 +282,9 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.55rem',
     fontWeight: 800,
-    color: '#050505',
+    color: '#f9fafb',
+    background: '#111827',
+    border: '1px solid #374151',
     padding: '2px 6px',
     borderRadius: '10px',
   },
@@ -313,18 +295,18 @@ const styles = {
     zIndex: 1000,
     width: 'min(380px, calc(100vw - 32px))',
     height: '520px',
-    background: '#080c14',
-    border: '1px solid rgba(0, 240, 255, 0.3)',
+    background: '#1f2937',
+    border: '1px solid #374151',
     borderRadius: '12px',
     display: 'flex',
     flexDirection: 'column',
-    boxShadow: '0 0 30px rgba(0, 240, 255, 0.25)',
+    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.6)',
     overflow: 'hidden',
   },
   header: {
     padding: '0.85rem 1rem',
-    background: 'rgba(5, 8, 15, 0.95)',
-    borderBottom: '1px solid #00F0FF',
+    background: '#111827',
+    borderBottom: '1px solid #374151',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -338,19 +320,20 @@ const styles = {
     width: 10,
     height: 10,
     borderRadius: '50%',
-    boxShadow: '0 0 8px currentColor',
+    background: '#2563eb',
+    boxShadow: '0 0 8px #2563eb',
   },
   headerName: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.95rem',
     fontWeight: 800,
-    letterSpacing: '0.08em',
+    color: '#f9fafb',
     margin: 0,
   },
   headerTitle: {
     fontFamily: "'Rajdhani', sans-serif",
     fontSize: '0.7rem',
-    color: '#9CA3AF',
+    color: '#9ca3af',
     margin: 0,
   },
   closeBtn: {
@@ -363,25 +346,26 @@ const styles = {
     alignItems: 'center',
     gap: '0.35rem',
     padding: '0.4rem 0.75rem',
-    background: 'rgba(0,0,0,0.4)',
-    borderBottom: '1px solid rgba(255,255,255,0.05)',
+    background: '#111827',
+    borderBottom: '1px solid #374151',
     overflowX: 'auto',
   },
   personaLabel: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.55rem',
-    color: '#6B7280',
+    color: '#6b7280',
     marginRight: '2px',
   },
   personaChip: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.58rem',
     fontWeight: 700,
-    padding: '2px 6px',
-    borderRadius: '3px',
+    padding: '3px 8px',
+    borderRadius: '4px',
     border: '1px solid',
     cursor: 'pointer',
     whiteSpace: 'nowrap',
+    transition: 'all 0.15s ease',
   },
   messagesArea: {
     flex: 1,
@@ -403,15 +387,20 @@ const styles = {
     fontFamily: "'Inter', sans-serif",
   },
   userBubble: {
-    background: 'rgba(230, 36, 41, 0.2)',
-    border: '1px solid #E62429',
-    color: '#FFFFFF',
+    background: '#2563eb',
+    color: '#f9fafb',
     borderBottomRightRadius: '2px',
+  },
+  aiBubble: {
+    background: '#111827',
+    border: '1px solid #374151',
+    color: '#f9fafb',
   },
   msgAiLabel: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.58rem',
     fontWeight: 700,
+    color: '#2563eb',
     marginBottom: '4px',
   },
   msgText: {
@@ -421,24 +410,25 @@ const styles = {
     display: 'flex',
     gap: '0.5rem',
     padding: '0.75rem',
-    background: 'rgba(5, 8, 15, 0.95)',
-    borderTop: '1px solid rgba(255,255,255,0.08)',
+    background: '#111827',
+    borderTop: '1px solid #374151',
   },
   inputField: {
     flex: 1,
-    background: 'rgba(15, 20, 30, 0.8)',
-    border: '1px solid rgba(0, 240, 255, 0.2)',
-    borderRadius: '4px',
-    padding: '0.5rem 0.75rem',
-    color: '#FFFFFF',
-    fontSize: '0.78rem',
+    background: '#1f2937',
+    border: '1px solid #374151',
+    borderRadius: '6px',
+    padding: '0.55rem 0.85rem',
+    color: '#f9fafb',
+    fontSize: '0.8rem',
     fontFamily: "'Inter', sans-serif",
     outline: 'none',
   },
   sendBtn: {
+    background: '#2563eb',
     border: 'none',
-    borderRadius: '4px',
-    padding: '0.5rem 0.8rem',
+    borderRadius: '6px',
+    padding: '0.55rem 0.85rem',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',

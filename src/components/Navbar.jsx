@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Shield, Award } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
   const location = useLocation()
@@ -24,13 +24,11 @@ export default function Navbar() {
 
   return (
     <header style={styles.header}>
-      <div style={styles.topBarGlow} />
-
       <div style={styles.container}>
-        {/* Stark Industries Emblem & Title */}
+        {/* Brand */}
         <Link to="/home" style={styles.brandLink}>
-          <div style={styles.reactorBadge}>
-            <div style={styles.reactorInner} />
+          <div style={styles.badgeWrap}>
+            <div style={styles.badgeInner} />
           </div>
           <div style={styles.brandTextWrap}>
             <span style={styles.brandTitle}>J.A.R.V.I.S.</span>
@@ -38,7 +36,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <nav style={styles.desktopNav}>
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path
@@ -48,9 +46,9 @@ export default function Navbar() {
                 to={link.path}
                 style={{
                   ...styles.navItem,
-                  color: isActive ? '#FFD700' : '#E2E8F0',
-                  borderBottom: isActive ? '2px solid #E62429' : '2px solid transparent',
-                  background: isActive ? 'rgba(230, 36, 41, 0.12)' : 'transparent',
+                  color: isActive ? '#f9fafb' : '#9ca3af',
+                  borderBottom: isActive ? '2px solid #2563eb' : '2px solid transparent',
+                  background: isActive ? 'rgba(37, 99, 235, 0.12)' : 'transparent',
                 }}
               >
                 {link.name}
@@ -64,8 +62,8 @@ export default function Navbar() {
           <Link to="/register" style={{ textDecoration: 'none' }}>
             <motion.button
               style={styles.registerBtn}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(230, 36, 41, 0.6)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ backgroundColor: '#1d4ed8', scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               [ INITIALIZE REGISTRATION ]
             </motion.button>
@@ -76,7 +74,7 @@ export default function Navbar() {
             style={styles.mobileToggle}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X size={26} color="#E62429" /> : <Menu size={26} color="#E62429" />}
+            {mobileOpen ? <X size={26} color="#2563eb" /> : <Menu size={26} color="#2563eb" />}
           </button>
         </div>
       </div>
@@ -97,7 +95,7 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 style={{
                   ...styles.mobileNavItem,
-                  color: location.pathname === link.path ? '#FFD700' : '#E2E8F0',
+                  color: location.pathname === link.path ? '#f9fafb' : '#9ca3af',
                 }}
               >
                 {link.name}
@@ -117,27 +115,14 @@ export default function Navbar() {
   )
 }
 
-const RED = '#E62429'
-const GOLD = '#FFD700'
-const BG = '#08080A'
-
 const styles = {
   header: {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    background: 'rgba(8, 8, 10, 0.92)',
+    background: 'rgba(17, 24, 39, 0.92)',
     backdropFilter: 'blur(16px)',
-    borderBottom: '1px solid rgba(230, 36, 41, 0.3)',
-    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.8)',
-  },
-  topBarGlow: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '2px',
-    background: `linear-gradient(90deg, transparent, ${RED}, ${GOLD}, ${RED}, transparent)`,
+    borderBottom: '1px solid #374151',
   },
   container: {
     maxWidth: '1350px',
@@ -153,23 +138,23 @@ const styles = {
     gap: '0.75rem',
     textDecoration: 'none',
   },
-  reactorBadge: {
+  badgeWrap: {
     width: '34px',
     height: '34px',
     borderRadius: '50%',
-    border: `2px solid ${RED}`,
-    background: 'rgba(230, 36, 41, 0.15)',
+    border: '2px solid #2563eb',
+    background: 'rgba(37, 99, 235, 0.15)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: `0 0 12px ${RED}`,
+    boxShadow: '0 0 12px rgba(37, 99, 235, 0.4)',
   },
-  reactorInner: {
+  badgeInner: {
     width: '12px',
     height: '12px',
     borderRadius: '50%',
-    background: GOLD,
-    boxShadow: `0 0 10px ${GOLD}`,
+    background: '#2563eb',
+    boxShadow: '0 0 8px #2563eb',
   },
   brandTextWrap: {
     display: 'flex',
@@ -179,7 +164,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontWeight: 900,
     fontSize: '1.25rem',
-    color: '#FFFFFF',
+    color: '#f9fafb',
     letterSpacing: '0.12em',
     lineHeight: 1,
   },
@@ -187,7 +172,7 @@ const styles = {
     fontFamily: "'Rajdhani', sans-serif",
     fontWeight: 700,
     fontSize: '0.65rem',
-    color: RED,
+    color: '#2563eb',
     letterSpacing: '0.2em',
     marginTop: '2px',
   },
@@ -215,15 +200,14 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.72rem',
     fontWeight: 800,
-    color: '#FFFFFF',
-    background: `linear-gradient(135deg, ${RED} 0%, #991B1B 100%)`,
-    border: `1px solid ${GOLD}`,
-    padding: '0.6rem 1.3rem',
-    borderRadius: '4px',
+    color: '#f9fafb',
+    background: '#2563eb',
+    border: '1px solid #374151',
+    padding: '0.65rem 1.3rem',
+    borderRadius: '6px',
     cursor: 'pointer',
     letterSpacing: '0.1em',
-    boxShadow: `0 0 15px ${RED}50`,
-    transition: 'all 0.25s ease',
+    transition: 'all 0.2s ease',
   },
   mobileToggle: {
     background: 'transparent',
@@ -232,8 +216,8 @@ const styles = {
     display: 'none',
   },
   mobileMenu: {
-    background: '#0a0a0e',
-    borderBottom: `1px solid ${RED}`,
+    background: '#111827',
+    borderBottom: '1px solid #374151',
     padding: '1rem 1.5rem',
     display: 'flex',
     flexDirection: 'column',
@@ -250,12 +234,12 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.8rem',
     fontWeight: 800,
-    color: '#FFFFFF',
-    background: RED,
+    color: '#f9fafb',
+    background: '#2563eb',
     textDecoration: 'none',
     marginTop: '0.5rem',
     padding: '0.75rem',
     textAlign: 'center',
-    borderRadius: '4px',
+    borderRadius: '6px',
   },
 }

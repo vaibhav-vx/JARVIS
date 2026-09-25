@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Shield, Zap, Cpu, Award, Calendar, Eye, ChevronRight } from 'lucide-react'
+import { Shield, Zap, Cpu, Award, Calendar, Eye } from 'lucide-react'
 
 export default function HomePage() {
   /* Countdown Timer Logic for Oct 16, 2026 */
@@ -80,21 +80,21 @@ export default function HomePage() {
 
           {/* Action CTAs */}
           <div style={styles.heroBtnGroup}>
-            <Link to="/register">
+            <Link to="/register" style={{ textDecoration: 'none' }}>
               <motion.button
                 style={styles.primaryBtn}
-                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(230, 36, 41, 0.7)' }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ backgroundColor: '#1d4ed8', scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
               >
                 [ INITIALIZE REGISTRATION ]
               </motion.button>
             </Link>
 
-            <Link to="/protocols">
+            <Link to="/protocols" style={{ textDecoration: 'none' }}>
               <motion.button
                 style={styles.secondaryBtn}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ backgroundColor: '#374151', scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
               >
                 [ DISCOVER PROTOCOLS ]
               </motion.button>
@@ -119,7 +119,7 @@ export default function HomePage() {
             <div style={styles.statLabel}>SPECIALIZED TRACKS</div>
           </div>
           <div style={styles.statCard}>
-            <div style={{ ...styles.statNumber, color: '#FFD700' }}>STARK GRANTS</div>
+            <div style={{ ...styles.statNumber, color: '#f9fafb' }}>STARK GRANTS</div>
             <div style={styles.statLabel}>CASH & REWARDS POOL</div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default function HomePage() {
         <div style={styles.hubGridCards}>
           {/* Card 1: About */}
           <Link to="/about" style={styles.hubCard}>
-            <Shield size={28} color="#E62429" />
+            <Shield size={28} color="#2563eb" />
             <h4 style={styles.hubCardTitle}>THE STARK INITIATIVE</h4>
             <p style={styles.hubCardDesc}>
               Classified mission briefing & Iron Man video transmission.
@@ -145,47 +145,47 @@ export default function HomePage() {
 
           {/* Card 2: Protocols */}
           <Link to="/protocols" style={styles.hubCard}>
-            <Cpu size={28} color="#FFD700" />
-            <h4 style={{ ...styles.hubCardTitle, color: '#FFD700' }}>AI PROTOCOLS</h4>
+            <Cpu size={28} color="#2563eb" />
+            <h4 style={styles.hubCardTitle}>AI PROTOCOLS</h4>
             <p style={styles.hubCardDesc}>
               4 Specialized tracks: J.A.R.V.I.S., F.R.I.D.A.Y., E.D.I.T.H., H.O.M.E.R.
             </p>
-            <div style={{ ...styles.hubCardLink, color: '#FFD700' }}>VIEW PROTOCOLS &rsaquo;</div>
+            <div style={styles.hubCardLink}>VIEW PROTOCOLS &rsaquo;</div>
           </Link>
 
           {/* Card 3: V.I.S.I.O.N. AR */}
           <Link to="/vision" style={styles.hubCard}>
-            <Eye size={28} color="#E62429" />
-            <h4 style={{ ...styles.hubCardTitle, color: '#E62429' }}>V.I.S.I.O.N. (AR)</h4>
+            <Eye size={28} color="#2563eb" />
+            <h4 style={styles.hubCardTitle}>V.I.S.I.O.N. (AR)</h4>
             <p style={styles.hubCardDesc}>
               WebAR Tech Treasure Hunt on campus using phone camera.
             </p>
-            <div style={{ ...styles.hubCardLink, color: '#E62429' }}>LAUNCH AR SCANNER &rsaquo;</div>
+            <div style={styles.hubCardLink}>LAUNCH AR SCANNER &rsaquo;</div>
           </Link>
 
           {/* Card 4: Armor Vault */}
           <Link to="/armor-vault" style={styles.hubCard}>
-            <Zap size={28} color="#FFD700" />
-            <h4 style={{ ...styles.hubCardTitle, color: '#FFD700' }}>STARK ARMOR VAULT</h4>
+            <Zap size={28} color="#2563eb" />
+            <h4 style={styles.hubCardTitle}>STARK ARMOR VAULT</h4>
             <p style={styles.hubCardDesc}>
               Interactive 3D Iron Man Suit Specs (Mark I to Mark LXXXV).
             </p>
-            <div style={{ ...styles.hubCardLink, color: '#FFD700' }}>ENTER VAULT &rsaquo;</div>
+            <div style={styles.hubCardLink}>ENTER VAULT &rsaquo;</div>
           </Link>
 
           {/* Card 5: Prizes */}
           <Link to="/prizes" style={styles.hubCard}>
-            <Award size={28} color="#FFD700" />
-            <h4 style={{ ...styles.hubCardTitle, color: '#FFD700' }}>STARK GRANTS</h4>
+            <Award size={28} color="#2563eb" />
+            <h4 style={styles.hubCardTitle}>STARK GRANTS</h4>
             <p style={styles.hubCardDesc}>
               Gold, Silver, Bronze podium prizes & special track awards.
             </p>
-            <div style={{ ...styles.hubCardLink, color: '#FFD700' }}>VIEW GRANTS &rsaquo;</div>
+            <div style={styles.hubCardLink}>VIEW GRANTS &rsaquo;</div>
           </Link>
 
           {/* Card 6: Timeline */}
           <Link to="/timeline" style={styles.hubCard}>
-            <Calendar size={28} color="#E62429" />
+            <Calendar size={28} color="#2563eb" />
             <h4 style={styles.hubCardTitle}>MISSION SCHEDULE</h4>
             <p style={styles.hubCardDesc}>
               Flight path timeline for October 16–17, 2026.
@@ -198,15 +198,10 @@ export default function HomePage() {
   )
 }
 
-const RED = '#E62429'
-const GOLD = '#FFD700'
-const BG = '#070709'
-
 const styles = {
   root: {
     position: 'relative',
-    background: BG,
-    color: '#FFFFFF',
+    color: '#f9fafb',
     minHeight: '100vh',
     overflowX: 'hidden',
   },
@@ -235,22 +230,22 @@ const styles = {
     position: 'absolute',
     inset: 0,
     borderRadius: '50%',
-    border: `2px dashed ${RED}`,
+    border: `2px dashed #2563eb`,
     animation: 'spin 30s linear infinite',
   },
   reactorRingInner: {
     position: 'absolute',
     inset: '20%',
     borderRadius: '50%',
-    border: `1.5px solid ${GOLD}80`,
+    border: `1.5px solid #1d4ed8`,
     animation: 'reactor-pulse 3s ease-in-out infinite',
   },
   reactorCore: {
     position: 'absolute',
     inset: '40%',
     borderRadius: '50%',
-    background: GOLD,
-    boxShadow: `0 0 50px ${GOLD}, 0 0 100px ${RED}80`,
+    background: '#2563eb',
+    boxShadow: `0 0 50px #2563eb`,
   },
   heroContent: {
     position: 'relative',
@@ -261,7 +256,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
     fontWeight: 700,
-    color: GOLD,
+    color: '#2563eb',
     letterSpacing: '0.2em',
     marginBottom: '0.75rem',
     textTransform: 'uppercase',
@@ -270,17 +265,16 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: 'clamp(3.5rem, 10vw, 7rem)',
     fontWeight: 900,
-    color: '#FFFFFF',
+    color: '#f9fafb',
     letterSpacing: '0.15em',
     lineHeight: 1,
-    textShadow: `0 0 30px ${RED}80`,
     margin: 0,
   },
   heroSubtitle: {
     fontFamily: "'Rajdhani', sans-serif",
     fontSize: 'clamp(1.2rem, 4vw, 2.2rem)',
     fontWeight: 700,
-    color: RED,
+    color: '#2563eb',
     letterSpacing: '0.3em',
     marginTop: '0.5rem',
     textTransform: 'uppercase',
@@ -288,24 +282,24 @@ const styles = {
   heroTagline: {
     fontFamily: "'Inter', sans-serif",
     fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-    color: '#E2E8F0',
+    color: '#9ca3af',
     marginTop: '0.75rem',
   },
 
   /* Countdown */
   countdownContainer: {
     marginTop: '2.5rem',
-    background: 'rgba(15, 17, 23, 0.9)',
-    border: `1px solid ${RED}50`,
+    background: 'linear-gradient(135deg, #000000 0%, #030303 14%, #08080a 28%, #0d0d10 42%, #131316 57%, #17171a 71%, #1e1e22 85%, #242428 100%)',
+    border: '1px solid #374151',
     borderRadius: '10px',
     padding: '1.5rem 2rem',
-    boxShadow: `0 0 30px ${RED}20`,
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
     display: 'inline-block',
   },
   countdownTitle: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.7rem',
-    color: GOLD,
+    color: '#2563eb',
     letterSpacing: '0.2em',
     marginBottom: '1rem',
   },
@@ -324,20 +318,19 @@ const styles = {
     fontFamily: "'JetBrains Mono', monospace",
     fontSize: 'clamp(1.8rem, 5vw, 3rem)',
     fontWeight: 800,
-    color: '#FFFFFF',
+    color: '#f9fafb',
     lineHeight: 1,
-    textShadow: `0 0 15px ${RED}`,
   },
   timerLabel: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.6rem',
-    color: '#9CA3AF',
+    color: '#9ca3af',
     marginTop: '0.3rem',
     letterSpacing: '0.1em',
   },
   timerColon: {
     fontSize: '2rem',
-    color: RED,
+    color: '#2563eb',
     fontWeight: 700,
     marginBottom: '1rem',
   },
@@ -354,35 +347,36 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.8rem',
     fontWeight: 800,
-    color: '#FFFFFF',
-    background: `linear-gradient(135deg, ${RED} 0%, #991B1B 100%)`,
-    border: `1px solid ${GOLD}`,
+    color: '#f9fafb',
+    background: '#2563eb',
+    border: '1px solid #374151',
     padding: '1rem 2.2rem',
-    borderRadius: '4px',
+    borderRadius: '6px',
     cursor: 'pointer',
     letterSpacing: '0.12em',
-    boxShadow: `0 0 20px ${RED}50`,
+    transition: 'all 0.2s ease',
   },
   secondaryBtn: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.8rem',
     fontWeight: 700,
-    color: GOLD,
-    background: 'rgba(255, 215, 0, 0.1)',
-    border: `1px solid ${GOLD}`,
+    color: '#f9fafb',
+    background: '#1f2937',
+    border: '1px solid #374151',
     padding: '1rem 2.2rem',
-    borderRadius: '4px',
+    borderRadius: '6px',
     cursor: 'pointer',
     letterSpacing: '0.12em',
+    transition: 'all 0.2s ease',
   },
 
   /* Stats Section */
   statsSection: {
     position: 'relative',
     zIndex: 1,
-    borderTop: `1px solid ${RED}30`,
-    borderBottom: `1px solid ${RED}30`,
-    background: 'rgba(12, 14, 20, 0.95)',
+    borderTop: `1px solid #374151`,
+    borderBottom: `1px solid #374151`,
+    background: '#1f2937',
     padding: '2rem 1.5rem',
   },
   statsContainer: {
@@ -400,14 +394,14 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.4rem',
     fontWeight: 800,
-    color: RED,
+    color: '#2563eb',
     letterSpacing: '0.05em',
   },
   statLabel: {
     fontFamily: "'Rajdhani', sans-serif",
     fontSize: '0.8rem',
     fontWeight: 600,
-    color: '#9CA3AF',
+    color: '#9ca3af',
     letterSpacing: '0.1em',
     marginTop: '0.25rem',
   },
@@ -428,14 +422,14 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.6rem',
     fontWeight: 800,
-    color: RED,
+    color: '#f9fafb',
     letterSpacing: '0.15em',
     margin: 0,
   },
   sectionSub: {
     fontFamily: "'Inter', sans-serif",
     fontSize: '0.9rem',
-    color: '#9CA3AF',
+    color: '#9ca3af',
     marginTop: '0.5rem',
   },
   hubGridCards: {
@@ -444,29 +438,28 @@ const styles = {
     gap: '1.75rem',
   },
   hubCard: {
-    background: 'rgba(15, 17, 23, 0.85)',
-    border: `1px solid ${RED}30`,
-    borderRadius: '8px',
+    background: 'linear-gradient(135deg, #000000 0%, #030303 14%, #08080a 28%, #0d0d10 42%, #131316 57%, #17171a 71%, #1e1e22 85%, #242428 100%)',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    borderRadius: '10px',
     padding: '2rem 1.5rem',
     textDecoration: 'none',
     display: 'flex',
     flexDirection: 'column',
     gap: '0.75rem',
     transition: 'all 0.3s ease',
-    backdropFilter: 'blur(10px)',
   },
   hubCardTitle: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.1rem',
     fontWeight: 700,
-    color: RED,
+    color: '#f9fafb',
     margin: 0,
     letterSpacing: '0.08em',
   },
   hubCardDesc: {
     fontFamily: "'Inter', sans-serif",
     fontSize: '0.85rem',
-    color: '#9CA3AF',
+    color: '#9ca3af',
     lineHeight: '1.5',
     margin: 0,
   },
@@ -474,7 +467,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.72rem',
     fontWeight: 700,
-    color: RED,
+    color: '#2563eb',
     letterSpacing: '0.1em',
     marginTop: 'auto',
   },

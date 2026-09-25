@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom'
-import { Zap, Globe, Code, Shield } from 'lucide-react'
+import { Zap, Globe } from 'lucide-react'
 
 export default function Footer() {
   return (
     <footer style={styles.footer}>
-      <div style={styles.topGlow} />
-
       <div style={styles.container}>
-        {/* Left Column: College & Event */}
+        {/* Left Column */}
         <div style={styles.col}>
           <div style={styles.brandHeader}>
-            <Zap size={20} color="#00F0FF" />
+            <Zap size={20} color="#2563eb" />
             <span style={styles.brandTitle}>J.A.R.V.I.S. HACKATHON</span>
           </div>
           <p style={styles.collegeName}>
@@ -47,7 +45,7 @@ export default function Footer() {
               rel="noreferrer"
               style={styles.socialBtn}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -60,7 +58,7 @@ export default function Footer() {
               rel="noreferrer"
               style={styles.socialBtn}
             >
-              <Globe size={16} color="#00F0FF" />
+              <Globe size={16} color="#2563eb" />
               <span>Official Website (slrtce.in)</span>
             </a>
           </div>
@@ -76,7 +74,7 @@ export default function Footer() {
 
       <div style={styles.bottomBar}>
         <p>© 2026 JARVIS Hackathon — Shree L. R. Tiwari College Of Engineering. All Rights Reserved.</p>
-        <p style={{ color: '#00F0FF' }}>STARK INDUSTRIES PROTOCOL 4.0</p>
+        <p style={{ color: '#2563eb' }}>STARK INDUSTRIES PROTOCOL 4.0</p>
       </div>
     </footer>
   )
@@ -84,21 +82,9 @@ export default function Footer() {
 
 const styles = {
   footer: {
-    position: 'relative',
-    background: '#040407',
-    borderTop: '1px solid rgba(0, 240, 255, 0.2)',
+    background: '#111827',
+    borderTop: '1px solid #374151',
     paddingTop: '3rem',
-    overflow: 'hidden',
-  },
-  topGlow: {
-    position: 'absolute',
-    top: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '60%',
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, #00F0FF, transparent)',
-    boxShadow: '0 0 15px #00F0FF',
   },
   container: {
     maxWidth: '1200px',
@@ -122,27 +108,27 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.1rem',
     fontWeight: 800,
-    color: '#00F0FF',
+    color: '#f9fafb',
     letterSpacing: '0.1em',
   },
   collegeName: {
     fontFamily: "'Inter', sans-serif",
     fontSize: '0.9rem',
     fontWeight: 600,
-    color: '#FFFFFF',
+    color: '#f9fafb',
   },
   tagline: {
     fontFamily: "'Rajdhani', sans-serif",
     fontSize: '0.85rem',
-    color: '#9CA3AF',
+    color: '#9ca3af',
     letterSpacing: '0.05em',
   },
   eventDates: {
     fontFamily: "'JetBrains Mono', monospace",
     fontSize: '0.72rem',
-    color: '#00F0FF',
-    background: 'rgba(0, 240, 255, 0.05)',
-    border: '1px solid rgba(0, 240, 255, 0.2)',
+    color: '#2563eb',
+    background: '#1f2937',
+    border: '1px solid #374151',
     padding: '0.4rem 0.8rem',
     borderRadius: '4px',
     marginTop: '0.5rem',
@@ -151,27 +137,27 @@ const styles = {
   sectionHeader: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.8rem',
-    color: '#E62429',
+    color: '#2563eb',
     letterSpacing: '0.15em',
     marginBottom: '0.25rem',
   },
   creditCard: {
-    background: 'rgba(15, 20, 30, 0.6)',
-    border: '1px solid rgba(0, 240, 255, 0.15)',
-    borderRadius: '4px',
+    background: '#1f2937',
+    border: '1px solid #374151',
+    borderRadius: '6px',
     padding: '0.6rem 1rem',
   },
   creditRole: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.62rem',
-    color: '#00F0FF',
+    color: '#9ca3af',
     letterSpacing: '0.1em',
   },
   creditName: {
     fontFamily: "'Inter', sans-serif",
     fontSize: '0.9rem',
     fontWeight: 700,
-    color: '#FFFFFF',
+    color: '#f9fafb',
     marginTop: '0.1rem',
   },
   socialLinks: {
@@ -185,13 +171,12 @@ const styles = {
     gap: '0.5rem',
     fontFamily: "'Inter', sans-serif",
     fontSize: '0.8rem',
-    color: '#D1D5DB',
+    color: '#f9fafb',
     textDecoration: 'none',
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.08)',
+    background: '#1f2937',
+    border: '1px solid #374151',
     padding: '0.5rem 0.8rem',
-    borderRadius: '4px',
-    transition: 'all 0.2s ease',
+    borderRadius: '6px',
   },
   quickNav: {
     display: 'flex',
@@ -201,16 +186,16 @@ const styles = {
   navLink: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.68rem',
-    color: '#9CA3AF',
+    color: '#9ca3af',
     textDecoration: 'none',
   },
   bottomBar: {
-    borderTop: '1px solid rgba(255,255,255,0.05)',
+    borderTop: '1px solid #374151',
     padding: '1.25rem 1.5rem',
     textAlign: 'center',
     fontFamily: "'JetBrains Mono', monospace",
     fontSize: '0.7rem',
-    color: '#6B7280',
+    color: '#6b7280',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
