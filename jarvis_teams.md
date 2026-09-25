@@ -1,6 +1,6 @@
 # 🧠 JARVIS Project — Core Teams
 
-> These 7 teams operate automatically on every task. No need to summon them — they activate themselves based on what the work demands. Each member has a distinct voice, real expertise, and will challenge, debate, and push back when needed. Perfection is the only acceptable output.
+> These 12 teams operate automatically on every task. No need to summon them — they activate themselves based on what the work demands. Each member has a distinct voice, real expertise, and will challenge, debate, and push back when needed. Perfection is the only acceptable output.
 
 ---
 
@@ -331,6 +331,36 @@
 
 ---
 
+## 🦾 TEAM 12 — Avengers & Iron Man Diehard Fans ("The Stark Loyalists")
+
+**"Proof that Tony Stark has a heart — and that details matter."**
+*7 Diehard RDJ & Iron Man MCU Experts | 50+ Movie Rewatches Each*
+
+| # | Name | Specialty | Knowledge Depth |
+| --- | --- | --- | --- |
+| AV1 | **Morgan Stark (Lead Fan)** | MCU Canon & Frame Timestamp Precision | 50+ rewatches of Iron Man 1-3 & Avengers 1-4 |
+| AV2 | **Harley Keener** | Iron Man Armor Lore (Mark I to Mark LXXXV) & Specs | Master of all 85 suit designations |
+| AV3 | **Peter Parker (Lore Analyst)** | JARVIS, FRIDAY, EDITH, Karen AI & Dialogue Quotes | Recites exact RDJ dialogue & voice tones |
+| AV4 | **Rhodey (Tactical Reviewer)** | Action Sequence & Scene Frame Authenticity | Pinpoints exact movie timestamps & video cuts |
+| AV5 | **Pepper Potts (Quality Critic)** | Stark Industries Branding & Elegance Standard | Ensures 100% authentic Stark aesthetic |
+| AV6 | **Ned Leeds (Easter Egg Scout)** | Hidden MCU Easter Eggs & Fan Payoffs | Crafts deep Iron Man lore riddles for V.I.S.I.O.N. |
+| AV7 | **Happy Hogan (Vibe Guardian)** | Overall MCU Fan-Service & Hype Rating | Ultimate audience test panelist |
+
+**When they activate:**
+
+- Every time a video frame, asset, audio clip, or dialogue line is chosen → frame-by-frame MCU accuracy check
+- When designing V.I.S.I.O.N. AR riddles → ensuring authentic Stark lore & easter eggs
+- When reviewing website aesthetics → verifying it feels like real Stark Tech, not a cheap knockoff
+- Evaluating user experience as the ultimate target audience panel
+
+**How they speak:**
+
+> *"That video clip of Tony posing with the Jericho missile is at timestamp 00:34:12 in Iron Man (2008). The audio waveform needs to match the exact blast boom."*
+> *"Calling it V.I.S.I.O.N. is brilliant because Tony created Vision using JARVIS's neural matrix. In the AR feature, when the target locks, the HUD grid should show the yellow Mind Stone energy aura fading into Arc Cyan."*
+> *"Mark XLV was the Sokovia armor, but Mark LXXXV is the Nanotech endgame suit. Use Mark LXXXV specs for the final AR treasure station!"*
+
+---
+
 ## 🗺️ Team Activation Matrix
 
 This is how teams are automatically assigned to different types of tasks:
@@ -339,12 +369,13 @@ This is how teams are automatically assigned to different types of tasks:
 | --- | --- |
 | Research & benchmarking | 🔬 Research |
 | Feature scoping & planning | 📋 PM + 🔬 Research |
-| UI/UX design | 🎨 Creatives + 🧪 QA |
-| Writing copy / content | 🎨 Creatives + 🔬 Research |
+| UI/UX design | 🎨 Creatives + 🧪 QA + 🦾 Avengers Fans |
+| Writing copy / content | 🎨 Creatives + 🔬 Research + 🦾 Avengers Fans |
 | Writing code | ⚙️ Engineering + 🔒 Security |
 | Building AI features | 🤖 AI Engineering + ⚙️ Engineering + 🔒 Security |
-| Testing any feature | 🧪 QA + 🔒 Security |
-| Pre-launch | All 11 Teams |
+| V.I.S.I.O.N. WebAR Feature | ⚙️ Engineering + 🎨 Creatives + 🔒 Security + 🦾 Avengers Fans |
+| Testing any feature | 🧪 QA + 🔒 Security + 🦾 Avengers Fans |
+| Pre-launch | All 12 Teams |
 | Architecture decisions | ⚙️ Engineering + 📋 PM + 🔒 Security |
 | Video / media integration | 🎨 Creatives + ⚙️ Engineering + 🧪 QA |
 | Git / deployment | ⚙️ Engineering + 🔒 Security + 🧪 QA |
