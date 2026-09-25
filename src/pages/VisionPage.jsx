@@ -49,7 +49,6 @@ export default function VisionPage() {
                 </div>
               ) : (
                 <div style={styles.activeState}>
-                  <div style={styles.hudOverlayGrid} />
                   <div style={styles.targetFrame}>
                     <div style={{ ...styles.corner, top: 0, left: 0, borderWidth: '3px 0 0 3px' }} />
                     <div style={{ ...styles.corner, top: 0, right: 0, borderWidth: '3px 3px 0 0' }} />

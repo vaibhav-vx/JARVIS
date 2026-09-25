@@ -39,7 +39,6 @@ export default function AboutPage() {
                 >
                   <source src="/videos/iron-man-scene.mp4" type="video/mp4" />
                 </video>
-                <div style={styles.scanLines} />
               </div>
 
               <div style={styles.videoFooter}>

@@ -26,10 +26,6 @@ export default function HomePage() {
 
   return (
     <div style={styles.root}>
-      {/* Background Atmosphere */}
-      <div style={styles.bgGrid} />
-      <div style={styles.scanLine} />
-
       {/* ── HERO CONSOLE ───────────────────────── */}
       <section style={styles.heroSection}>
         {/* Arc Reactor Graphic */}
@@ -213,25 +209,6 @@ const styles = {
     color: '#FFFFFF',
     minHeight: '100vh',
     overflowX: 'hidden',
-  },
-  bgGrid: {
-    position: 'fixed',
-    inset: 0,
-    backgroundImage: `linear-gradient(rgba(230, 36, 41, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(230, 36, 41, 0.05) 1px, transparent 1px)`,
-    backgroundSize: '50px 50px',
-    pointerEvents: 'none',
-    zIndex: 0,
-  },
-  scanLine: {
-    position: 'fixed',
-    top: '-100%',
-    left: 0,
-    right: 0,
-    height: '2px',
-    background: `linear-gradient(transparent, ${RED}40, transparent)`,
-    animation: 'scan-line 8s linear infinite',
-    pointerEvents: 'none',
-    zIndex: 0,
   },
 
   /* Hero Section */
