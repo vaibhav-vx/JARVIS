@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import JarvisChatbot from './components/JarvisChatbot'
@@ -17,9 +17,12 @@ import FaqPage from './pages/FaqPage'
 import RegisterPage from './pages/RegisterPage'
 
 export default function App() {
+  const location = useLocation()
+  const isLanding = location.pathname === '/'
+
   return (
-    <div style={{ background: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Navbar />
+    <div style={{ background: '#070709', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {!isLanding && <Navbar />}
 
       <main style={{ flex: 1 }}>
         <Routes>
@@ -38,8 +41,8 @@ export default function App() {
         </Routes>
       </main>
 
-      <JarvisChatbot />
-      <Footer />
+      {!isLanding && <JarvisChatbot />}
+      {!isLanding && <Footer />}
     </div>
   )
 }

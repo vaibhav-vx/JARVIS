@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Shield, Zap, Cpu, Award, Calendar, ChevronRight, Eye } from 'lucide-react'
+import { Shield, Zap, Cpu, Award, Calendar, Eye, ChevronRight } from 'lucide-react'
 
 export default function HomePage() {
   /* Countdown Timer Logic for Oct 16, 2026 */
@@ -26,13 +26,13 @@ export default function HomePage() {
 
   return (
     <div style={styles.root}>
-      {/* HUD Background Grid & Scanlines */}
-      <div style={styles.hudGrid} />
+      {/* Background Atmosphere */}
+      <div style={styles.bgGrid} />
       <div style={styles.scanLine} />
 
       {/* ── HERO CONSOLE ───────────────────────── */}
       <section style={styles.heroSection}>
-        {/* Animated Arc Reactor SVG in Background */}
+        {/* Arc Reactor Graphic */}
         <div style={styles.reactorWrap}>
           <div style={styles.reactorRingOuter} />
           <div style={styles.reactorRingInner} />
@@ -61,30 +61,22 @@ export default function HomePage() {
             <div style={styles.countdownTitle}>[ T-MINUS TO MISSION LAUNCH ]</div>
             <div style={styles.timerGrid}>
               <div style={styles.timerBox}>
-                <span style={styles.timerValue}>
-                  {String(timeLeft.days).padStart(2, '0')}
-                </span>
+                <span style={styles.timerValue}>{String(timeLeft.days).padStart(2, '0')}</span>
                 <span style={styles.timerLabel}>DAYS</span>
               </div>
               <span style={styles.timerColon}>:</span>
               <div style={styles.timerBox}>
-                <span style={styles.timerValue}>
-                  {String(timeLeft.hours).padStart(2, '0')}
-                </span>
+                <span style={styles.timerValue}>{String(timeLeft.hours).padStart(2, '0')}</span>
                 <span style={styles.timerLabel}>HOURS</span>
               </div>
               <span style={styles.timerColon}>:</span>
               <div style={styles.timerBox}>
-                <span style={styles.timerValue}>
-                  {String(timeLeft.minutes).padStart(2, '0')}
-                </span>
+                <span style={styles.timerValue}>{String(timeLeft.minutes).padStart(2, '0')}</span>
                 <span style={styles.timerLabel}>MINS</span>
               </div>
               <span style={styles.timerColon}>:</span>
               <div style={styles.timerBox}>
-                <span style={styles.timerValue}>
-                  {String(timeLeft.seconds).padStart(2, '0')}
-                </span>
+                <span style={styles.timerValue}>{String(timeLeft.seconds).padStart(2, '0')}</span>
                 <span style={styles.timerLabel}>SECS</span>
               </div>
             </div>
@@ -95,7 +87,7 @@ export default function HomePage() {
             <Link to="/register">
               <motion.button
                 style={styles.primaryBtn}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(230, 36, 41, 0.7)' }}
                 whileTap={{ scale: 0.95 }}
               >
                 [ INITIALIZE REGISTRATION ]
@@ -131,7 +123,7 @@ export default function HomePage() {
             <div style={styles.statLabel}>SPECIALIZED TRACKS</div>
           </div>
           <div style={styles.statCard}>
-            <div style={styles.statNumber}>STARK GRANTS</div>
+            <div style={{ ...styles.statNumber, color: '#FFD700' }}>STARK GRANTS</div>
             <div style={styles.statLabel}>CASH & REWARDS POOL</div>
           </div>
         </div>
@@ -140,29 +132,29 @@ export default function HomePage() {
       {/* ── CENTRAL COMMAND HUB CARDS ─────────────── */}
       <section style={styles.hubSection}>
         <div style={styles.sectionHeader}>
-          <h3 style={styles.sectionTitle}>[ COMMAND CONSOLE HUBS ]</h3>
-          <p style={styles.sectionSub}>Select a protocol module to access details</p>
+          <h3 style={styles.sectionTitle}>[ STARK COMMAND HUBS ]</h3>
+          <p style={styles.sectionSub}>Access specialized modules and event protocols</p>
         </div>
 
         <div style={styles.hubGridCards}>
           {/* Card 1: About */}
           <Link to="/about" style={styles.hubCard}>
-            <Shield size={28} color="#00F0FF" />
+            <Shield size={28} color="#E62429" />
             <h4 style={styles.hubCardTitle}>THE STARK INITIATIVE</h4>
             <p style={styles.hubCardDesc}>
-              Classified mission briefing & Iron Man transmission.
+              Classified mission briefing & Iron Man video transmission.
             </p>
             <div style={styles.hubCardLink}>EXPLORE ABOUT &rsaquo;</div>
           </Link>
 
           {/* Card 2: Protocols */}
           <Link to="/protocols" style={styles.hubCard}>
-            <Cpu size={28} color="#00F0FF" />
-            <h4 style={styles.hubCardTitle}>AI PROTOCOLS</h4>
+            <Cpu size={28} color="#FFD700" />
+            <h4 style={{ ...styles.hubCardTitle, color: '#FFD700' }}>AI PROTOCOLS</h4>
             <p style={styles.hubCardDesc}>
               4 Specialized tracks: J.A.R.V.I.S., F.R.I.D.A.Y., E.D.I.T.H., H.O.M.E.R.
             </p>
-            <div style={styles.hubCardLink}>VIEW PROTOCOLS &rsaquo;</div>
+            <div style={{ ...styles.hubCardLink, color: '#FFD700' }}>VIEW PROTOCOLS &rsaquo;</div>
           </Link>
 
           {/* Card 3: V.I.S.I.O.N. AR */}
@@ -177,12 +169,12 @@ export default function HomePage() {
 
           {/* Card 4: Armor Vault */}
           <Link to="/armor-vault" style={styles.hubCard}>
-            <Zap size={28} color="#00F0FF" />
-            <h4 style={styles.hubCardTitle}>STARK ARMOR VAULT</h4>
+            <Zap size={28} color="#FFD700" />
+            <h4 style={{ ...styles.hubCardTitle, color: '#FFD700' }}>STARK ARMOR VAULT</h4>
             <p style={styles.hubCardDesc}>
               Interactive 3D Iron Man Suit Specs (Mark I to Mark LXXXV).
             </p>
-            <div style={styles.hubCardLink}>ENTER VAULT &rsaquo;</div>
+            <div style={{ ...styles.hubCardLink, color: '#FFD700' }}>ENTER VAULT &rsaquo;</div>
           </Link>
 
           {/* Card 5: Prizes */}
@@ -197,7 +189,7 @@ export default function HomePage() {
 
           {/* Card 6: Timeline */}
           <Link to="/timeline" style={styles.hubCard}>
-            <Calendar size={28} color="#00F0FF" />
+            <Calendar size={28} color="#E62429" />
             <h4 style={styles.hubCardTitle}>MISSION SCHEDULE</h4>
             <p style={styles.hubCardDesc}>
               Flight path timeline for October 16–17, 2026.
@@ -210,9 +202,9 @@ export default function HomePage() {
   )
 }
 
-const ARC = '#00F0FF'
 const RED = '#E62429'
-const BG = '#050505'
+const GOLD = '#FFD700'
+const BG = '#070709'
 
 const styles = {
   root: {
@@ -222,11 +214,11 @@ const styles = {
     minHeight: '100vh',
     overflowX: 'hidden',
   },
-  hudGrid: {
+  bgGrid: {
     position: 'fixed',
     inset: 0,
-    backgroundImage: `linear-gradient(${ARC}08 1px, transparent 1px), linear-gradient(90deg, ${ARC}08 1px, transparent 1px)`,
-    backgroundSize: '40px 40px',
+    backgroundImage: `linear-gradient(rgba(230, 36, 41, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(230, 36, 41, 0.05) 1px, transparent 1px)`,
+    backgroundSize: '50px 50px',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -236,7 +228,7 @@ const styles = {
     left: 0,
     right: 0,
     height: '2px',
-    background: `linear-gradient(transparent, ${ARC}30, transparent)`,
+    background: `linear-gradient(transparent, ${RED}40, transparent)`,
     animation: 'scan-line 8s linear infinite',
     pointerEvents: 'none',
     zIndex: 0,
@@ -266,22 +258,22 @@ const styles = {
     position: 'absolute',
     inset: 0,
     borderRadius: '50%',
-    border: `2px dashed ${ARC}`,
+    border: `2px dashed ${RED}`,
     animation: 'spin 30s linear infinite',
   },
   reactorRingInner: {
     position: 'absolute',
     inset: '20%',
     borderRadius: '50%',
-    border: `1.5px solid ${ARC}80`,
+    border: `1.5px solid ${GOLD}80`,
     animation: 'reactor-pulse 3s ease-in-out infinite',
   },
   reactorCore: {
     position: 'absolute',
     inset: '40%',
     borderRadius: '50%',
-    background: ARC,
-    boxShadow: `0 0 50px ${ARC}, 0 0 100px ${ARC}80`,
+    background: GOLD,
+    boxShadow: `0 0 50px ${GOLD}, 0 0 100px ${RED}80`,
   },
   heroContent: {
     position: 'relative',
@@ -292,7 +284,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
     fontWeight: 700,
-    color: ARC,
+    color: GOLD,
     letterSpacing: '0.2em',
     marginBottom: '0.75rem',
     textTransform: 'uppercase',
@@ -301,17 +293,17 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: 'clamp(3.5rem, 10vw, 7rem)',
     fontWeight: 900,
-    color: ARC,
+    color: '#FFFFFF',
     letterSpacing: '0.15em',
     lineHeight: 1,
-    textShadow: `0 0 30px ${ARC}80`,
+    textShadow: `0 0 30px ${RED}80`,
     margin: 0,
   },
   heroSubtitle: {
     fontFamily: "'Rajdhani', sans-serif",
     fontSize: 'clamp(1.2rem, 4vw, 2.2rem)',
     fontWeight: 700,
-    color: '#FFFFFF',
+    color: RED,
     letterSpacing: '0.3em',
     marginTop: '0.5rem',
     textTransform: 'uppercase',
@@ -319,24 +311,24 @@ const styles = {
   heroTagline: {
     fontFamily: "'Inter', sans-serif",
     fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-    color: '#9CA3AF',
+    color: '#E2E8F0',
     marginTop: '0.75rem',
   },
 
   /* Countdown */
   countdownContainer: {
     marginTop: '2.5rem',
-    background: 'rgba(10, 15, 25, 0.85)',
-    border: `1px solid ${ARC}40`,
-    borderRadius: '8px',
+    background: 'rgba(15, 17, 23, 0.9)',
+    border: `1px solid ${RED}50`,
+    borderRadius: '10px',
     padding: '1.5rem 2rem',
-    boxShadow: `0 0 30px ${ARC}20`,
+    boxShadow: `0 0 30px ${RED}20`,
     display: 'inline-block',
   },
   countdownTitle: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.7rem',
-    color: RED,
+    color: GOLD,
     letterSpacing: '0.2em',
     marginBottom: '1rem',
   },
@@ -355,9 +347,9 @@ const styles = {
     fontFamily: "'JetBrains Mono', monospace",
     fontSize: 'clamp(1.8rem, 5vw, 3rem)',
     fontWeight: 800,
-    color: ARC,
+    color: '#FFFFFF',
     lineHeight: 1,
-    textShadow: `0 0 15px ${ARC}`,
+    textShadow: `0 0 15px ${RED}`,
   },
   timerLabel: {
     fontFamily: "'Orbitron', sans-serif",
@@ -368,7 +360,7 @@ const styles = {
   },
   timerColon: {
     fontSize: '2rem',
-    color: ARC,
+    color: RED,
     fontWeight: 700,
     marginBottom: '1rem',
   },
@@ -384,37 +376,36 @@ const styles = {
   primaryBtn: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.8rem',
-    fontWeight: 700,
-    color: RED,
-    background: 'rgba(230, 36, 41, 0.15)',
-    border: `1.5px solid ${RED}`,
+    fontWeight: 800,
+    color: '#FFFFFF',
+    background: `linear-gradient(135deg, ${RED} 0%, #991B1B 100%)`,
+    border: `1px solid ${GOLD}`,
     padding: '1rem 2.2rem',
     borderRadius: '4px',
     cursor: 'pointer',
     letterSpacing: '0.12em',
-    boxShadow: `0 0 20px ${RED}40`,
+    boxShadow: `0 0 20px ${RED}50`,
   },
   secondaryBtn: {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.8rem',
     fontWeight: 700,
-    color: ARC,
-    background: 'rgba(0, 240, 255, 0.1)',
-    border: `1.5px solid ${ARC}`,
+    color: GOLD,
+    background: 'rgba(255, 215, 0, 0.1)',
+    border: `1px solid ${GOLD}`,
     padding: '1rem 2.2rem',
     borderRadius: '4px',
     cursor: 'pointer',
     letterSpacing: '0.12em',
-    boxShadow: `0 0 20px ${ARC}30`,
   },
 
   /* Stats Section */
   statsSection: {
     position: 'relative',
     zIndex: 1,
-    borderTop: `1px solid ${ARC}20`,
-    borderBottom: `1px solid ${ARC}20`,
-    background: 'rgba(5, 8, 15, 0.9)',
+    borderTop: `1px solid ${RED}30`,
+    borderBottom: `1px solid ${RED}30`,
+    background: 'rgba(12, 14, 20, 0.95)',
     padding: '2rem 1.5rem',
   },
   statsContainer: {
@@ -432,7 +423,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.4rem',
     fontWeight: 800,
-    color: ARC,
+    color: RED,
     letterSpacing: '0.05em',
   },
   statLabel: {
@@ -460,7 +451,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.6rem',
     fontWeight: 800,
-    color: ARC,
+    color: RED,
     letterSpacing: '0.15em',
     margin: 0,
   },
@@ -476,8 +467,8 @@ const styles = {
     gap: '1.75rem',
   },
   hubCard: {
-    background: 'rgba(10, 15, 25, 0.75)',
-    border: `1px solid ${ARC}30`,
+    background: 'rgba(15, 17, 23, 0.85)',
+    border: `1px solid ${RED}30`,
     borderRadius: '8px',
     padding: '2rem 1.5rem',
     textDecoration: 'none',
@@ -491,7 +482,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '1.1rem',
     fontWeight: 700,
-    color: ARC,
+    color: RED,
     margin: 0,
     letterSpacing: '0.08em',
   },
@@ -506,7 +497,7 @@ const styles = {
     fontFamily: "'Orbitron', sans-serif",
     fontSize: '0.72rem',
     fontWeight: 700,
-    color: ARC,
+    color: RED,
     letterSpacing: '0.1em',
     marginTop: 'auto',
   },

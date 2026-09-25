@@ -1,266 +1,76 @@
 /* ============================================
-   JARVIS HACKATHON — Global Design System
+   JARVIS HACKATHON — Stark Design System
    Shree L. R. Tiwari College Of Engineering
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-/* ── CSS Variables ─────────────────────────── */
 :root {
-  /* Backgrounds */
-  --bg-primary:    #050505;
-  --bg-elevated:   #0a0a0f;
-  --bg-panel:      #0d0d1a;
-  --bg-card:       #0f0f1f;
-
-  /* Brand Colors */
-  --arc-cyan:      #00F0FF;
-  --arc-cyan-dim:  #00F0FF40;
-  --stark-red:     #E62429;
-  --stark-red-dim: #E6242940;
-  --gold:          #D4AF37;
-  --gold-dim:      #D4AF3740;
-  --white:         #FFFFFF;
-  --gray-400:      #9CA3AF;
-  --gray-600:      #4B5563;
-
-  /* Glow Effects */
-  --glow-cyan-sm:  0 0 8px var(--arc-cyan), 0 0 20px var(--arc-cyan-dim);
-  --glow-cyan-md:  0 0 15px var(--arc-cyan), 0 0 40px var(--arc-cyan-dim);
-  --glow-cyan-lg:  0 0 25px var(--arc-cyan), 0 0 60px var(--arc-cyan-dim);
-  --glow-red-sm:   0 0 8px var(--stark-red), 0 0 20px var(--stark-red-dim);
-  --glow-red-md:   0 0 15px var(--stark-red), 0 0 40px var(--stark-red-dim);
-  --glow-gold-sm:  0 0 8px var(--gold), 0 0 20px var(--gold-dim);
-
-  /* Typography */
-  --font-hud:      'Orbitron', monospace;
-  --font-heading:  'Rajdhani', sans-serif;
-  --font-body:     'Inter', sans-serif;
-  --font-code:     'JetBrains Mono', monospace;
-
-  /* Spacing */
-  --section-px:    clamp(1.5rem, 5vw, 6rem);
-  --section-py:    clamp(4rem, 8vw, 8rem);
+  --stark-red: #E62429;
+  --stark-red-glow: rgba(230, 36, 41, 0.35);
+  --stark-darkred: #991B1B;
+  --arc-gold: #FFD700;
+  --arc-amber: #F59E0B;
+  --arc-blue: #38BDF8;
+  --titanium: #E2E8F0;
+  --carbon-bg: #070709;
+  --panel-bg: rgba(15, 17, 23, 0.85);
+  --panel-border: rgba(230, 36, 41, 0.25);
 }
 
-/* ── Reset & Base ──────────────────────────── */
-*, *::before, *::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+html, body {
+  background-color: var(--carbon-bg);
+  color: var(--titanium);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-img, video {
-  max-width: 100%;
-  display: block;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
+::-webkit-scrollbar-track {
+  background: #050507;
 }
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
-
-/* ── Scrollbar ─────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb {
-  background: var(--arc-cyan-dim);
-  border-radius: 3px;
+  background: #E62429;
+  border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--arc-cyan); }
-
-/* ── HUD Grid Background ───────────────────── */
-.hud-grid {
-  background-image:
-    linear-gradient(var(--arc-cyan-dim) 1px, transparent 1px),
-    linear-gradient(90deg, var(--arc-cyan-dim) 1px, transparent 1px);
-  background-size: 60px 60px;
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD700;
 }
 
-/* ── Glow Text ─────────────────────────────── */
-.text-glow-cyan { text-shadow: var(--glow-cyan-sm); }
-.text-glow-red  { text-shadow: var(--glow-red-sm); }
-.text-glow-gold { text-shadow: var(--glow-gold-sm); }
-
-/* ── HUD Bracket Card ──────────────────────── */
-/* Uses corner-only brackets instead of full border */
-.hud-card {
-  position: relative;
-  background: var(--bg-card);
-  padding: 2rem;
-}
-.hud-card::before,
-.hud-card::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: var(--arc-cyan);
-  border-style: solid;
-}
-.hud-card::before {
-  top: 0; left: 0;
-  border-width: 2px 0 0 2px;
-  box-shadow: var(--glow-cyan-sm);
-}
-.hud-card::after {
-  bottom: 0; right: 0;
-  border-width: 0 2px 2px 0;
-  box-shadow: var(--glow-cyan-sm);
+/* Keyframe Animations */
+@keyframes scan-line {
+  0% { top: -10%; }
+  100% { top: 110%; }
 }
 
-/* Inner corners via pseudo on child */
-.hud-card-inner::before,
-.hud-card-inner::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: var(--arc-cyan);
-  border-style: solid;
-}
-.hud-card-inner::before { top: 0; right: 0; border-width: 2px 2px 0 0; }
-.hud-card-inner::after  { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
-
-/* ── HUD Button ────────────────────────────── */
-.hud-btn {
-  font-family: var(--font-hud);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.85rem 2rem;
-  border: 1px solid var(--arc-cyan);
-  color: var(--arc-cyan);
-  background: transparent;
-  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-  position: relative;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
-.hud-btn:hover {
-  background: var(--arc-cyan);
-  color: var(--bg-primary);
-  box-shadow: var(--glow-cyan-md);
-}
-
-.hud-btn-red {
-  border-color: var(--stark-red);
-  color: var(--stark-red);
-}
-.hud-btn-red:hover {
-  background: var(--stark-red);
-  color: var(--white);
-  box-shadow: var(--glow-red-md);
-}
-
-/* ── Scan Line Overlay ─────────────────────── */
-.scanlines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 240, 255, 0.015) 2px,
-    rgba(0, 240, 255, 0.015) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ── Arc Reactor Pulse Animation ───────────── */
 @keyframes reactor-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px var(--arc-cyan), 0 0 60px var(--arc-cyan-dim), 0 0 100px var(--arc-cyan-dim);
     transform: scale(1);
+    box-shadow: 0 0 20px var(--stark-red-glow);
   }
   50% {
-    box-shadow: 0 0 40px var(--arc-cyan), 0 0 100px var(--arc-cyan-dim), 0 0 160px var(--arc-cyan-dim);
-    transform: scale(1.02);
+    transform: scale(1.05);
+    box-shadow: 0 0 45px rgba(255, 215, 0, 0.5);
   }
 }
 
-@keyframes scan-line {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1; }
-}
-
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-  20%, 24%, 55% { opacity: 0.4; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
-}
-
-/* ── Section Base ──────────────────────────── */
-.section {
-  padding: var(--section-py) var(--section-px);
-  position: relative;
-  overflow: hidden;
-}
-
-/* ── Typography Utilities ──────────────────── */
-.font-hud     { font-family: var(--font-hud); }
-.font-heading { font-family: var(--font-heading); }
-.font-code    { font-family: var(--font-code); }
-
-.text-cyan   { color: var(--arc-cyan); }
-.text-red    { color: var(--stark-red); }
-.text-gold   { color: var(--gold); }
-.text-gray   { color: var(--gray-400); }
-
-/* ── Glow Divider ──────────────────────────── */
-.glow-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--arc-cyan), transparent);
-  box-shadow: var(--glow-cyan-sm);
-}
-
-/* ── Reduced Motion ────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
