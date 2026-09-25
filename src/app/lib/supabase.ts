@@ -49,8 +49,11 @@ export interface SponsorInquiryPayload {
  */
 export async function submitRegistration(payload: RegistrationPayload) {
   try {
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder')) {
-      console.warn('Supabase URL not configured in .env.local — Fallback local state used.')
+    const isPlaceholder = !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                          process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder') || 
+                          process.env.NEXT_PUBLIC_SUPABASE_URL.includes('your-project-id');
+    if (isPlaceholder) {
+      console.warn('Supabase URL is using placeholder template — Fallback local state used.')
       return { success: true, data: payload, localFallback: true }
     }
 
@@ -68,8 +71,11 @@ export async function submitRegistration(payload: RegistrationPayload) {
  */
 export async function submitSponsorInquiry(payload: SponsorInquiryPayload) {
   try {
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder')) {
-      console.warn('Supabase URL not configured in .env.local — Fallback local state used.')
+    const isPlaceholder = !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                          process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder') || 
+                          process.env.NEXT_PUBLIC_SUPABASE_URL.includes('your-project-id');
+    if (isPlaceholder) {
+      console.warn('Supabase URL is using placeholder template — Fallback local state used.')
       return { success: true, data: payload, localFallback: true }
     }
 
