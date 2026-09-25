@@ -1,20 +1,28 @@
 {
   "name": "jarvis",
   "version": "1.0.0",
-  "description": "",
+  "description": "JARVIS Hackathon 4.0 Platform — Shree L. R. Tiwari College Of Engineering",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vaibhav-vx/JARVIS.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "supabase",
+    "jarvis",
+    "hackathon",
+    "slrtce"
+  ],
+  "author": "Vaibhav Dubey",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vaibhav-vx/JARVIS/issues"
@@ -24,15 +32,17 @@
     "@supabase/supabase-js": "^2.117.1",
     "framer-motion": "^13.4.3",
     "lucide-react": "^1.48.0",
+    "next": "^16.3.6",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "react-router-dom": "^7.18.4"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.1",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.6.1",
     "postcss": "^8.5.28",
     "tailwindcss": "^3.4.19",
-    "vite": "^8.3.1"
+    "typescript": "^7.0.2"
   }
 }
